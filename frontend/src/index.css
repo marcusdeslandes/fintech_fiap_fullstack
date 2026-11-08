@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Tokens de cor herdados da prévia (ATV-FASE4) */
+@theme {
+  --color-page: #030507;
+  --color-surface: #0d1424;
+  --color-surfaceSoft: #111a2e;
+  --color-stroke: #1b2540;
+  --color-primary: #5c63c7;
+  --color-primarySoft: #4f57b8;
+  --color-muted: #96a0b5;
+
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page);
+    color: white;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-surface shadow-card border border-white/5;
+  }
+
+  .input {
+    @apply w-full rounded-xl bg-surfaceSoft border border-stroke px-4 py-2.5 text-white outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/40;
+    color-scheme: dark;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primarySoft px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-primary disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-red-600/90 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer;
+  }
+}
+
+@layer utilities {
+  /* Gráfico donut do saldo: a porcentagem vem pela variável --pct */
+  .donut {
+    background: conic-gradient(#5c63c7 0 var(--pct, 0%), #ffffff var(--pct, 0%) 100%);
+  }
+}
